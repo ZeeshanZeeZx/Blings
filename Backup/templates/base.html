@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlingsByShehyaz - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <section id="header">
+        <a href="{% url 'index' %}" id="brand"><h3>BlingsByShehyaz</h3></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+                <li><a class="{% if request.path == '/shop/' %}active{% endif %}" href="{% url 'shop' %}">Shop</a></li>
+                <li><a class="{% if request.path == '/blog/' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li>
+                <li><a class="{% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+                <li><a class="{% if request.path == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
+                <li id="lg-bag"><a class="{% if request.path == '/cart/' %}active{% endif %}" href="{% url 'cart' %}"><i class="fa-solid fa-bag-shopping"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+{% block content %}
+
+{% endblock content %}
+
+<hr>
+<footer class="section-p1">
+    <div class="col">
+        <h2 class="logo">BlingsByShehyaz</h2>
+        <h4>Contact</h4>
+        <p><strong>Address:</strong> House No. 418, Tipu Sultan Chowk, Before Shivaji Chowk, Nagpur, 440002</p>
+        <p><strong>Phone:</strong> +91 00000 00000 / +91 00000 00000</p>
+        <p><strong>Hours:</strong> 10::00 AM - 06:00 PM, Mon - Sat</p>
+        <div class="follow">
+            <h4>Follow us</h4>
+            <div class="icon">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-pinterest-p"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About Us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+    </div>
+
+    <div class="col">
+        <h4>Payment</h4>
+        <p>Secured payment gateway</p>
+        <img src="{% static 'images/pay.png' %}" alt="">
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2024, BlingsByShehyaz. All Rights Reserved</p>
+    </div>
+</footer>
+
+<!-- <script src="script.js"></script> -->
+<script src="{% static 'script.js'%}"></script>
+</body>
+</html>

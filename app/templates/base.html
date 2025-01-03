@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlingsByShehyaz - {% block title %}Home{% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (including Popper.js for dropdown functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block css %}{% endblock css %}
+</head>
+<body>
+    <section id="header">
+        <a href="{% url 'index' %}" id="brand"><h3>BlingsByShehyaz</h3></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+                <li><a class="{% if request.path == '/shop/' %}active{% endif %}" href="{% url 'shop' %}">Shop</a></li>
+                <li><a class="{% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+                <li><a class="{% if request.path == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {% if request.path == '/order/' or request.path == '/profile/' or request.path == '/changepassword/' %}active{% endif %} " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{request.user.username|capfirst}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                        <li><a class="dropdown-item" href="{% url 'changepassword' %}">Change Password</a></li>
+                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item"><li><a>Logout</a></li></button>
+                        </form>
+                    </ul>
+                    <li id="lg-bag" style="position: relative;">
+                        <a class="{% if request.path == '/cart/' %}active{% endif %}" href="{% url 'cart' %}">
+                            <i class="fa-solid fa-bag-shopping" style="position: relative;"></i>
+                            <span id='lblCartCount'>{{ cart_count }}</span>
+                        </a>
+                    </li>
+                    
+                    {% else%}
+                        <li><a class="{% if request.path == '/login/' %}active{% endif %}" href="{% url 'login' %}">Login</a></li>
+                        <li><a class="{% if request.path == '/register/' %}active{% endif %}" href="{% url 'register' %}">Register</a></li>
+                        {% endif %}    
+                    </li>
+            </ul>
+        </div>
+    </section>
+
+{% block content %}
+
+{% endblock content %}
+
+<hr>
+<footer class="section-p1">
+    <div class="col">
+        <h2 class="logo">BlingsByShehyaz</h2>
+        <h4>Contact</h4>
+        <p><strong>Address:</strong> House No. 418, Tipu Sultan Chowk, Before Shivaji Chowk, Nagpur, 440002</p>
+        <p><strong>Phone:</strong> +91 00000 00000 / +91 00000 00000</p>
+        <p><strong>Hours:</strong> 10::00 AM - 06:00 PM, Mon - Sat</p>
+        <div class="follow">
+            <h4>Follow us</h4>
+            <div class="icon">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-pinterest-p"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About Us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+    </div>
+
+    <div class="col">
+        <h4>Payment</h4>
+        <p>Secured payment gateway</p>
+        <img src="{% static 'images/pay.png' %}" alt="">
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2024, BlingsByShehyaz. All Rights Reserved</p>
+    </div>
+</footer>
+
+<script src="{% static 'script.js'%}"></script>
+</body>
+</html>

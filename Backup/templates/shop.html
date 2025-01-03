@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% comment %} {% load static %} {% endcomment %}
+{% load custom_filters %}
+{% load active_tag %}
+{% block content %}
+
+    <section id="page-header">
+        <h2>#stayhome</h2>
+        <p>Save more with coupons & up to 15% off!</p>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <div class="pro-container">
+            {% for product in page_obj %}
+                <div class="pro" onclick="window.location.href='{% url 'product_detail' product.id %}'">
+                    <img src="{{ product.images.url }}" alt="{{ product.name }}.jpg">
+                    <div class="des">
+                        <!-- <span>BlingsByShehyaz</span> -->
+                        <h5>{{ product.name }}</h5>
+                        <div class="star">
+                            {% for _ in product.rating|to_range %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </div>
+                        <h4>{{product.price }}</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <section id="pagination" class="section-p1">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+        {% comment %} <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#"><i class="fa-solid fa-arrow-right"></i></a> {% endcomment %}
+    </section>
+
+{% endblock content %}

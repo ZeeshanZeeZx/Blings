@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% comment %} {% load static %} {% endcomment %}
+{% block content %}
+
+    <section id="page-header" class="about-header">
+        <h2>#lets_order</h2>
+        <p>THANK YOU! for choicing our product.</p>
+    </section>
+
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cart items will be rendered here -->
+            </tbody>
+        </table>
+    </section>
+    
+
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block content %}
+
+    <section id="about-head" class="section-p1">
+        <img src="{% static 'images/bags_img/b3.jpeg' %}" alt="">
+        <div>
+            <h2>Who We Are?</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facere voluptas quod. Illo explicabo voluptatibus alias repellendus cum facilis suscipit, doloribus quasi eius. A libero voluptatibus doloremque. Ut, modi repellendus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nostrum unde quia voluptate dolor ipsam id corrupti recusandae architecto aliquid minima eveniet quos doloremque fugit fugiat autem illo esse iste?</p>
+            <abbr title="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis, dolores enim aut officia recusandae impedit expedita in deserunt ipsa possimus eius beatae, obcaecati laudantium aspernatur sit nesciunt sed iusto ipsum.</abbr>
+
+            <br><br>
+
+            <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur quos unde necessitatibus molestias sequi placeat optio minus illum nihil doloremque quo magni libero maiores, eveniet magnam facilis aut ipsam ut.
+            </marquee>
+        </div>
+    </section>
+
+    <section id="about-app" class="section-p1">
+        <h1>View Our <a href="{% url 'shop'%}">Products</a></h1>
+        <div class="video">
+            <video width="320" height="240" autoplay muted loop src="{% static 'pro-img/threee-vid.mp4' %}"></video>
+        </div>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="{% static 'features/f1.png'%}" alt="">
+            <h6>Free Shipping</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="{% static 'features/f2.png'%}" alt="">
+            <h6>Online Order</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="{% static 'features/f3.png'%}" alt="">
+            <h6>Save Money</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="{% static 'features/f4.png'%}" alt="">
+            <h6>Promotions</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="{% static 'features/f5.png'%}" alt="">
+            <h6>Happy Sell</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="{% static 'features/f6.png'%}" alt="">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+
+{% endblock content %}

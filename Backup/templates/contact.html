@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <section id="page-header" class="about-header">
+        <h2>#lets_talk</h2>
+        <p>LEAVE A MESSAGE. We love to hear from you!</p>
+    </section>
+
+    <section id="contact-details" class="section-p1">
+        <div class="details">
+            <span>GET IN TOUCH</span>
+            <h2>Visit one of out shop location or contact us today</h2>
+            <h3>Shop</h3>
+            <div>
+                <li>
+                    <i class="fa-regular fa-map"></i>
+                    <p>House No. 000, Tipu sultan chowk, Pili nadi, Kamptee road, Nagpur - 440002</p>
+                </li>
+
+                <li>
+                    <i class="fa-regular fa-envelope"></i>
+                    <p>contact@email.com</p>
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <p>+91 00000 00000</p>
+                </li>
+
+                <li>
+                    <i class="fa-regular fa-clock"></i>
+                    <p>Monday to Saturday: 09:00 AM to 08:00 PM</p>
+                </li>
+            </div>
+        </div>
+
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.6511694040754!2d79.12383536627526!3d21.182749577129442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c6db3224183b%3A0x492734067e429c01!2sTipu%20Sultan%20Chowk%2C%20Sidharth%20Nagar%2C%20Nagpur%2C%20Maharashtra%20440026!5e0!3m2!1sen!2sin!4v1720337952670!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <section id="form-details">
+        <form action="">
+            <span>LEAVE A MESSAGE</span>
+            <h2>We love to hear from you</h2>
+            <input type="text" placeholder="Your Name">
+            <input type="text" placeholder="E-mail">
+            <input type="text" placeholder="Subject">
+            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <button class="normal">Submit</button>
+        </form>
+
+        <div class="people">
+            <div>
+                <img src="{% static 'images/Owner1.png' %}" alt="Zeeshan's img">
+                <p><span>Zeeshan Raza</span>Senior Developer <br> Phone: +91 91560 13781 <br> Email: zeeshanzx26@gmail.com</p>
+            </div>
+
+            <div>
+                <img src="{% static 'images/owner.png' %}" alt="Alfail's img">
+                <p><span>Alfaiz Sheikh</span>Junior Developer<br> Phone: +91 90751 55878 <br> Email: alfaizsheikh@gmail.com</p>
+            </div>
+            
+        </div>
+    </section>
+
+{% endblock content %}

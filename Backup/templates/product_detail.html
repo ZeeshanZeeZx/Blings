@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% comment %} {% load static %} {% endcomment %}
+{% load custom_filters %}
+{% block content %}
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img src="{{ product.images.url }}" width="100%" id="mainimg" alt="{{ product.name }}">
+            <div class="small-img-group">
+                {% if pi.counter > 1 %}
+                    {% for pi in product_img %}
+                        <div class="small-img-col">
+                            <img src="{{ pi.images.url }}" width="100%" class="small-img">
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="small-img-col">
+                        <img src="{{ product_img.images.url }}" width="100%" class="small-img">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="single-pro-details">
+            <h6>Home / Clutches</h6>
+            <h4>{{ product.name }}</h4>
+            <h2>₹{{ product.price}}.00</h2>
+            <input type="number" value="1">
+            <button class="normal" onclick="addToCart()">Add To Cart</button>
+            <h4>Product Details</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis tenetur sit consequuntur. Eaque, maiores. Nulla, ea libero eum at explicabo officia ipsa dolore porro ipsum pariatur reiciendis placeat est quod a vero quidem molestias quam illo excepturi. Eos doloremque explicabo molestias sed, reprehenderit corporis quas cum dicta saepe impedit modi perferendis corrupti officiis odio ipsam. Deserunt, suscipit, repudiandae quasi eos saepe reprehenderit cumque dolorem recusandae quaerat omnis maxime accusantium sapiente, ipsum necessitatibus optio. Minima veniam repellat earum alias deleniti iusto reprehenderit fugit, voluptate facere voluptatem? Harum ducimus quasi sit vero esse tenetur quibusdam omnis natus, facere pariatur, velit odio. Ut.
+            </span>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Season Collection New Modern Design</p>
+        <div class="pro-container">
+            {% for fp in f_products %}
+                <div class="pro">
+                    <img src="{{ fp.images.url }}" alt="{{ fp.name }}">
+                    <div class="des">
+                        <!-- <span>BlingsByShehyaz</span> -->
+                        <h5>{{ fp.name }}</h5>
+                        <div class="star">
+                            {% for _ in fp.rating|to_range %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </div>
+                        <h4>{{ fp.price }}</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock content %}

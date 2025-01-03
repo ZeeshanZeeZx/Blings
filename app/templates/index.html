@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+{% load active_tag %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+
+<section id="hero">
+    <h4>Trade-in-offer</h4>
+    <h2>Super value deals</h2>
+    <h1>On all products</h1>
+    <p>Save more with coupons & up to 15% off!</p>
+        <button onclick="window.location.href='{% url 'shop' %}'">Shop Now</button>
+</section>
+
+<section id="feature" class="section-p1">
+    <div class="fe-box">
+        <img src="{% static 'features/f1.png' %}" alt="">
+        <h6>Free Shipping</h6>
+    </div>
+
+    <div class="fe-box">
+        <img src="{% static 'features/f2.png'%}" alt="">
+        <h6>Online Order</h6>
+    </div>
+
+    <div class="fe-box">
+        <img src="{% static 'features/f3.png' %}" alt="">
+        <h6>Save Money</h6>
+    </div>
+
+    <div class="fe-box">
+        <img src="{% static 'features/f4.png' %}" alt="">
+        <h6>Promotions</h6>
+    </div>
+
+    <div class="fe-box">
+        <img src="{% static 'features/f5.png' %}" alt="">
+        <h6>Happy Sell</h6>
+    </div>
+
+    <div class="fe-box">
+        <img src="{% static 'features/f6.png' %}" alt="">
+        <h6>24/7 Support</h6>
+    </div>
+</section>
+
+<section id="product1" class="section-p1">
+    <h2>Featured Products</h2>
+    <p>Season Collection New Modern Design</p>
+    <div class="pro-container">
+    <!-- Inside your product containers -->
+    {% for product in products %}
+        <div class="pro" onclick="window.location.href='{% url 'product_detail' id=product.id %}'">
+            <img src="{{ product.images.url }}" alt="{{ product.name }}.jpg">
+            <div class="des">
+                <h5>{{ product.name }}</h5>
+                <div class="star">
+                    {% for _ in product.rating|to_range %}
+                        <i class="fas fa-star"></i>
+                    {% endfor %}
+                </div>
+                <h4>{{ product.price }}</h4>
+            </div>
+            <form action="{% url 'product_detail' product.id  %}"  class"d-inline">
+                <input type="hidden" name="prod_id" value={{ product.id }} id='prod_id'>
+                <button type='Submit'><i class="fa-solid fa-cart-shopping cart"></i></button>
+            </form>
+        </div>
+    {% endfor %}
+
+</section>
+
+<section id="sm-banner" class="section-p1">
+    <div class="banner-box">
+        <h4>Crazy Deals</h4>
+        <h2>Buy 2 Get 1 Free</h2>
+        <span>The best classic clutch is on sale at BlingsByShehyaz</span>
+        <button class="white" onclick="window.location.href='{% url 'shop' %}'">Learn More</button>
+    </div>
+
+    <div class="banner-box banner2">
+        <h4>Winter</h4>
+        <h2>Upcoming Season</h2>
+        <span>The best classic clutch is on sale at BlingsByShehyaz</span>
+        <button class="white" onclick="window.location.href='{% url 'shop' %}'">Collection</button>
+    </div>
+</section>
+{% endblock content %}

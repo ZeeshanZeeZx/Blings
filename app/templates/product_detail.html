@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% comment %} {% load static %} {% endcomment %}
+{% load custom_filters %}
+{% block title %}Product{% endblock title %}
+{% block content %}
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img src="{{ product.images.url }}" width="100%" id="mainimg" alt="{{ product.name }}">
+            <div class="small-img-group">
+                {% for imgs in product_images %}
+                <div class="small-img-col">
+                    <img src="  {{ imgs.images.url }}" width="100%" class="small-img">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="single-pro-details">
+            <h6>Home / Clutches</h6>
+            <h4>{{ product.name }}</h4>
+            <h2>₹{{ product.price}}.00</h2>
+            {% if request.user.is_authenticated %}
+                {% if item_already_in_cart %}
+                    <a href="{% url 'cart' %}" class="normal">Go to Cart</a>
+                    {% else %}
+                        <form action="/add-to-cart/" class"d-inline">
+                            <input type="hidden" name="prod_id" value={{ product.id }} id='prod_id'>
+                            <button type="submit" class="normal" >Add To Cart</button>
+                        </form>
+                {% endif %}
+            {% endif %} 
+            {% if not request.user.is_authenticated %}
+                <form action="/register/" class"d-inline">
+                    <input type="hidden" name="prod_id" value={{ product.id }} id='prod_id'>
+                    <button type="submit" class="normal" >Add To Cart</button>
+                </form>
+            {% endif %}
+            <h4>Product Details</h4>
+            <span>{{ product.description}}
+            </span>
+        </div>
+    </section>
+
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+     <h3>Welcome <span class="text-capitalize">{{ request.user }}</span></h3>
+     <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+       <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{ active }}">Profile</a></li>
+       <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+      </ul>
+     </div>
+     <div class="col-sm-8 offset-sm-1">
+      <form action="" method='post' novalidate>
+        <h3>Add New Address</h3>
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="form-group col-lg-6 mb-3">
+          {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.error|striptags}}</small>
+        </div>
+        {% endfor %}
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+        {% if messages %}
+          {% for message in messages %}
+              <p {% if message.tags %} class='alert alert-{{message.tags}} mb-5' {% endif %}>{{message}}</p>  
+          {% endfor %}
+        {% endif %}
+      </form>
+      <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary mt-3">Logout</button>
+      </form>
+    
+     <a href="{% url 'changepassword' %}" class="btn btn-warning mt-3">Change Password</a>
+     </div>
+    </div>
+   </div>
+{% endblock content %}
